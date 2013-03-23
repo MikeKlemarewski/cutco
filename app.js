@@ -1,6 +1,9 @@
 var express = require('express');
 var http = require('http');
 var redis = require('redis');
+var fs = require('fs');
+var child_process = require('child_process');
+var async = require('async');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -26,5 +29,32 @@ app.get('/leaderboard/', function(req, res){
 app.post('/', function(req, res){
     client.set(req.body.url, req.body.size.toString());
 });
+
+
+
+app.get('/:url', function(req, res){
+
+        checkPage(req.params.url, function(res){
+                res.writeHead(200, {'Content-Type':'text/html'});
+                res.end(res);
+        });
+
+});
+
+function checkPage(url, callback){
+        ps = child_process.spawn('lib/phantomjs/bin/phantomjs', ['lib/check.js', url]);
+        var blob = '';
+        ps.stdout.on('data', function(data){
+                blob += data;
+        });
+
+        ps.stdout.on('end', function(){
+                console.log(blob);
+        });
+
+        ps.stderr.on('data', function(data){
+                console.log('stderr: ' + data);
+        });
+}
 
 app.listen(PORT);
