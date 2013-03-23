@@ -26,7 +26,7 @@ app.post('/', function(req, res){
                 console.log(result);
                 client.set(result.url, result.size);
                 res.writeHead(200, {'Content-Type':'application/json'});
-                res.end(result);
+                res.end(result.toString());
             }
     });
 });
@@ -50,7 +50,7 @@ function checkPage(url, callback){
 
         data = {};
         data['url'] = results[0];
-        data['size'] = results[1];
+        data['size'] = parseInt(results[1]);
 
         if(data['error']){
             callback(null, true);
