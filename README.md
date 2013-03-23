@@ -19,6 +19,7 @@ cd into that directory and run:
     make install
     
 then run the redis server
+    
     redis-server
 
 Run
