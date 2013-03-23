@@ -3,17 +3,34 @@
 <head>
 <title>What kind of animal is your website?</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+  <div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+  <div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+     
+    <!-- Be sure to leave the brand out there if you want it shown -->
+    <a class="brand" href="#">Project name</a>
+     
+    <!-- Everything you want hidden at 940px or less, place within here -->
+    <div class="nav-collapse collapse">
+      <!-- .nav, .navbar-search, .navbar-form, etc -->
+    </div>
 
-  <div class="landing-wrapper">
-    <h1>Hello</h1>
     <label class="control-label" >Enter the url of your website</label>
     <div class="input-append">
       <input class="span2" id="site-address" value="www.yourwebsite.com" type="text">
       <button class="btn btn-primary" type="button" id="go-button">GO »</button>
     </div>
+  </div>
+  </div>
   </div>
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
