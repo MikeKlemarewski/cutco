@@ -26,7 +26,7 @@ app.post('/', function(req, res){
                 console.log(result);
                 client.set(result.url, result.size);
                 res.writeHead(200, {'Content-Type':'application/json'});
-                res.end(result.toString());
+                res.end(JSON.stringify(result));
             }
     });
 });
