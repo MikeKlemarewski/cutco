@@ -6,26 +6,34 @@
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
-  <h1>Hello</h1>
-    <div class="control-group">
+
+  <div class="landing-wrapper">
+    <h1>Hello</h1>
     <label class="control-label" >Enter the url of your website</label>
-    <div class="controls">
-      <div class="input-prepend">
-        <input class="span2" id="site-address" type="text">
-        <button class="btn btn-primary" type="button" id="go-button">GO »</button>
-      </div>
+    <div class="input-append">
+      <input class="span2" id="site-address" value="www.yourwebsite.com" type="text">
+      <button class="btn btn-primary" type="button" id="go-button">GO »</button>
     </div>
-    </div>
+  </div>
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script>
     $(document).ready(function() {
-      var goToLeader = function() {
-        window.location.href = "/leaderboard/";
+      var getData = function() {
+        // window.location.href = "/leaderboard/";
+        var siteAddress = $('#site-address').val();
+        $.getJSON('/leaderboard/', {url: siteAddress})
+        .done(function(data) {
+          console.log("data is: ", data);
+        })
+        .fail(function( jqxhr, textStatus, error) {
+          var err = textStatus + ', ' + error;
+          console.log( "Groups Request Failed: " + err);
+        }); 
       };
 
       $('#site-address').bind("enterKey",function(e){
-        goToLeader();
+        getData();
       });
       $('#site-address').keyup(function(e){
         if(e.keyCode == 13) {
@@ -33,7 +41,7 @@
         }
       });
       $('#go-button').click(function() {
-        goToLeader();
+        getData();
       });
     });
   </script>
