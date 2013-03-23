@@ -9,4 +9,8 @@ app.get('/', function(req, res){
     res.render('index.html');
 });
 
+app.get('/leaderboard', function(req, res){
+    res.render('leaderboard.html');
+});
+
 app.listen(PORT);
