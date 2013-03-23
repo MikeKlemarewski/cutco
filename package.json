@@ -4,7 +4,9 @@
     "dependencies":{
         "express":">=0.0.1",
         "redis": ">=0.0.1",
-        "ejs": ">=0.0.1"
+        "ejs": ">=0.0.1",
+        "async":">=0.0.1",
+        "phantomjs":">=0.0.1"
     },
     "engines": {
         "node": "0.8.x",
