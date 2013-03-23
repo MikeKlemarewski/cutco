@@ -16,6 +16,15 @@ app.get('/', function(req, res){
     res.render('index.html');
 });
 
+app.post('/', function(req, res){
+
+    checkPage(req.params.url, function(res){
+            res.writeHead(200, {'Content-Type':'text/html'});
+            res.end(res);
+            //client.set(req.body.url, req.body.size.toString());
+    });
+});
+
 app.get('/leaderboard/', function(req, res){
 
     if(req.query['page']){
@@ -26,20 +35,6 @@ app.get('/leaderboard/', function(req, res){
     res.render('leaderboard.html');
 });
 
-app.post('/', function(req, res){
-    client.set(req.body.url, req.body.size.toString());
-});
-
-
-
-app.get('/:url', function(req, res){
-
-        checkPage(req.params.url, function(res){
-                res.writeHead(200, {'Content-Type':'text/html'});
-                res.end(res);
-        });
-
-});
 
 function checkPage(url, callback){
         ps = child_process.spawn('lib/phantomjs/bin/phantomjs', ['lib/check.js', url]);
