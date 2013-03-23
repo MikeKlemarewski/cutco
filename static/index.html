@@ -22,12 +22,11 @@
     <!-- Everything you want hidden at 940px or less, place within here -->
     <div class="nav-collapse collapse">
       <!-- .nav, .navbar-search, .navbar-form, etc -->
-    </div>
-
-    <label class="control-label" >Enter the url of your website</label>
-    <div class="input-append">
-      <input class="span2" id="site-address" value="www.yourwebsite.com" type="text">
-      <button class="btn btn-primary" type="button" id="go-button">GO »</button>
+      <label class="control-label" >Enter the url of your website</label>
+      <div class="input-append">
+        <input class="span2" id="site-address" value="www.yourwebsite.com" type="text">
+        <button class="btn btn-primary" type="button" id="go-button">GO »</button>
+      </div>
     </div>
   </div>
   </div>
@@ -36,6 +35,12 @@
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
+      var processCurrent = function(current) {
+        
+      };
+      var processAll = function(all) {
+        
+      };
       var getData = function() {
         // window.location.href = "/leaderboard/";
         var siteAddress = $('#site-address').val();
@@ -49,6 +54,15 @@
           },
           success: function(data){
             
+            //TODO
+            tmpAll = [
+              {url: "yoursiteurl.com", size: 1200, rank: 104},
+              {url: "regerhteurl.com", size: 2200, rank: 104},
+              {url: "sdfgdsfhgrl.com", size: 1300, rank: 104},
+              {url: "yourggggggl.com", size: 1240, rank: 104},
+            ];
+            processCurrent(tmpCurrent);
+            processAll(tmpAll);
           },
           error: function(err){
             console.log("Error happened: ", err);
