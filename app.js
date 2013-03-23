@@ -13,7 +13,7 @@ app.get('/', function(req, res){
     res.render('index.html');
 });
 
-app.get('/leaderboard', function(req, res){
+app.get('/leaderboard/', function(req, res){
 
     if(req.query['page']){
         num = req.query('page');
