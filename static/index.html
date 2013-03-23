@@ -13,4 +13,21 @@
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
 </body>
+
+<script type="text/javascript">
+    $.ajax({
+        type: 'POST',
+        url: "http://" + location.host + "/",
+        dataType: 'json',
+        timeout: 30000,
+        data: {
+            "url": "http://google.ca",
+            "size": 10024
+        },
+        success: function(data){
+        },
+        error: function(data){
+        }
+    });
+</script>
 </html>
