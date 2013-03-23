@@ -17,19 +17,26 @@
   </div>
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
-  <script>
+  <script type="text/javascript">
     $(document).ready(function() {
       var getData = function() {
         // window.location.href = "/leaderboard/";
         var siteAddress = $('#site-address').val();
-        $.getJSON('/leaderboard/', {url: siteAddress})
-        .done(function(data) {
-          console.log("data is: ", data);
-        })
-        .fail(function( jqxhr, textStatus, error) {
-          var err = textStatus + ', ' + error;
-          console.log( "Groups Request Failed: " + err);
-        }); 
+        $.ajax({
+          type: 'POST',
+          url: "http://" + location.host + "/",
+          dataType: 'json',
+          timeout: 30000,
+          data: {
+              "url": siteAddress
+          },
+          success: function(data){
+            
+          },
+          error: function(err){
+            console.log("Error happened: ", err);
+          }
+        });
       };
 
       $('#site-address').bind("enterKey",function(e){
@@ -47,6 +54,7 @@
   </script>
 </body>
 
+<<<<<<< HEAD
 <script type="text/javascript">
     $.ajax({
         type: 'POST',
@@ -62,4 +70,6 @@
         }
     });
 </script>
+=======
+>>>>>>> 892183fca4112b07630da54cc4b8374552477881
 </html>
