@@ -8,18 +8,34 @@
 <body>
   <h1>Hello</h1>
     <div class="control-group">
-
-    <label class="control-label" for="inputIcon">Enter the url of your website</label>
-      <div class="controls">
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-home"></i></span>
-          <input class="span2" id="inputIcon" type="text">
-          <button class="btn btn-primary" type="button" id="go-button">GO »</button>
-        </div>
+    <label class="control-label" >Enter the url of your website</label>
+    <div class="controls">
+      <div class="input-prepend">
+        <input class="span2" id="site-address" type="text">
+        <button class="btn btn-primary" type="button" id="go-button">GO »</button>
       </div>
     </div>
-
+    </div>
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var goToLeader = function() {
+        window.location.href = "/leaderboard/";
+      };
+
+      $('#site-address').bind("enterKey",function(e){
+        goToLeader();
+      });
+      $('#site-address').keyup(function(e){
+        if(e.keyCode == 13) {
+          $(this).trigger("enterKey");
+        }
+      });
+      $('#go-button').click(function() {
+        goToLeader();
+      });
+    });
+  </script>
 </body>
 </html>
